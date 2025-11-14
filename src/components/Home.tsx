@@ -52,7 +52,7 @@ const Home: React.FC<HomeProps> = ({ name, title, photoUrl }) => {
 
                     {/* Download CV and Social Buttons */}
                     <div className="action-buttons">
-                        <a href="/cv.pdf" className="cv-download-button" download>
+                        <a href="/ProfessionalCVResume.pdf" className="cv-download-button" download>
                             <span className="cv-icon">📄</span>
                             Download CV
                         </a>
