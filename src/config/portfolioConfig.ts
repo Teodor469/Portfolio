@@ -74,7 +74,7 @@ export const portfolioConfig: PortfolioConfig = {
         photoUrl: "/Me.png",
         experience: [
             {
-                company: "Tech Solutions Inc.",
+                company: "1-Stream",
                 position: "Junior Backend Developer",
                 duration: "2025",
                 description: [
