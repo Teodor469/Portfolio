@@ -1,0 +1,56 @@
+/* --- Header & Navigation --- */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.main-nav {
+    background-color: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-primary);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    color: var(--text-secondary);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+.nav-button.active {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: var(--bg-primary);
+    box-shadow: 0 4px 16px var(--glow-orange);
+}
+
+/* --- Responsive --- */
+@media (min-width: 640px) {
+    .header { margin-bottom: 4rem; }
+    .nav-list { gap: 0.5rem; }
+    .nav-button { padding: 0.5rem 1rem; font-size: 1rem; }
+}

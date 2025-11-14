@@ -1,0 +1,88 @@
+/* --- Black, Grey & Orange Color Palette --- */
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-glass: rgba(26, 26, 26, 0.8);
+    --border-primary: #333333;
+    --border-accent: #4a4a4a;
+    
+    --text-primary: #ffffff;
+    --text-secondary: #e5e5e5;
+    --text-muted: #a3a3a3;
+    
+    --accent-primary: #ff8c00;
+    --accent-secondary: #ff9500;
+    --accent-tertiary: #ffa500;
+    --accent-muted: #cc7000;
+    --accent-orange: #ff8c00;
+    --accent-blue: #666666;
+    
+    --glow-orange: rgba(255, 140, 0, 0.3);
+    --glow-orange-light: rgba(255, 149, 0, 0.2);
+    --glow-grey: rgba(102, 102, 102, 0.2);
+    --glow-white: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Resets & Global Styles --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+body {
+    display: block !important;
+    place-items: unset !important;
+    min-width: unset !important;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Custom text selection colors */
+::selection {
+    background-color: var(--glow-orange);
+    color: var(--bg-primary);
+}
+
+::-moz-selection {
+    background-color: var(--glow-orange);
+    color: var(--bg-primary);
+}
+
+h2, h3, p {
+    margin: 0;
+}
+
+/* --- Common Styles --- */
+.section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.description {
+    color: var(--text-muted);
+    line-height: 1.625;
+}
+
+/* --- Responsive Section Titles --- */
+@media (min-width: 640px) {
+    .section-title { font-size: 2.25rem; }
+}
