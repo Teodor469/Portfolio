@@ -86,6 +86,16 @@ export const portfolioConfig: PortfolioConfig = {
                 technologies: ["Laravel", "PHP", "MySQL", "Redis", "Docker"]
             },
             {
+                company: "ItStep Academy",
+                position: "Lecturer",
+                duration: "2024 - 2025",
+                description: [
+                    "Facilitated project-based learning, resulting in students building real-world applications",
+                    "Organized and led workshops on emerging technologies and industry trends, keeping the academy’s curriculum up-to- date.",
+                ],
+                technologies: ["WordPress", "Stripe API", "Econt API", "Speedy API"]
+            },
+            {
                 company: "Freelance Projects",
                 position: "Full-Stack Developer",
                 duration: "2023 - 2024",

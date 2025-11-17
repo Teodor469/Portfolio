@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ParticleBackground from './ParticleBackground';
 import './Contact.css';
+import { portfolioConfig } from '../config/portfolioConfig';
 
 interface Social {
     name: string;
@@ -8,62 +10,60 @@ interface Social {
     icon: string;
 }
 
-interface ContactProps {
-    email: string;
-    socials: Social[];
-}
+interface ContactProps {}
 
-const Contact: React.FC<ContactProps> = ({ email, socials }) => {
+const Contact: React.FC<ContactProps> = () => {
+    const { t } = useTranslation();
     return (
         <div className="contact-section">
             <ParticleBackground />
             <div className="contact-content">
-                <h2 className="section-title">Let's Build Something Amazing Together</h2>
+                <h2 className="section-title">{t('contact.title')}</h2>
                 
                 <div className="contact-hero">
                     <div className="contact-message">
-                        <h3 className="contact-subtitle">Ready to discuss your next project?</h3>
+                        <h3 className="contact-subtitle">{t('contact.subtitle')}</h3>
                         <p className="contact-description">
-                            I'm actively seeking new opportunities where I can contribute my Laravel expertise and passion for clean, scalable code. Whether you're looking for a dedicated backend developer or someone to help bring your ideas to life, I'd love to hear from you!
+                            {t('contact.description')}
                         </p>
                         
                         <div className="contact-highlights">
                             <div className="highlight-item">
                                 <span className="highlight-icon">⚡</span>
-                                <span>Quick to respond</span>
+                                <span>{t('contact.highlights.quickResponse')}</span>
                             </div>
                             <div className="highlight-item">
                                 <span className="highlight-icon">🎯</span>
-                                <span>Focused on results</span>
+                                <span>{t('contact.highlights.focused')}</span>
                             </div>
                             <div className="highlight-item">
                                 <span className="highlight-icon">🚀</span>
-                                <span>Ready to start immediately</span>
+                                <span>{t('contact.highlights.readyToStart')}</span>
                             </div>
                         </div>
                     </div>
                     
                     <div className="contact-card">
-                        <h4 className="contact-card-title">Get in touch</h4>
+                        <h4 className="contact-card-title">{t('contact.cardTitle')}</h4>
                         <p className="contact-card-subtitle">
-                            Drop me a line and let's discuss how we can work together
+                            {t('contact.cardSubtitle')}
                         </p>
                         
                         <div className="contact-methods">
                             <a 
-                                href={`mailto:${email}`}
+                                href={`mailto:${portfolioConfig.contact.email}`}
                                 className="primary-contact-button"
                             >
                                 <span className="contact-icon">✉️</span>
-                                Send me an email
+                                {t('contact.sendEmail')}
                             </a>
                             
                             <div className="contact-divider">
-                                <span>or connect with me on</span>
+                                <span>{t('contact.connectOn')}</span>
                             </div>
                             
                             <div className="social-links-grid">
-                                {socials.map((social, index) => (
+                                {portfolioConfig.contact.socials.map((social, index) => (
                                     <a 
                                         key={index} 
                                         href={social.url} 
@@ -82,7 +82,7 @@ const Contact: React.FC<ContactProps> = ({ email, socials }) => {
                         </div>
                         
                         <div className="response-promise">
-                            <p>💬 I typically respond within 24 hours</p>
+                            <p>{t('contact.responseTime')}</p>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ const Contact: React.FC<ContactProps> = ({ email, socials }) => {
                 <div className="contact-footer">
                     <p className="availability-text">
                         <span className="availability-dot"></span>
-                        Available for full-time positions and freelance projects
+                        {t('contact.availability')}
                     </p>
                 </div>
             </div>

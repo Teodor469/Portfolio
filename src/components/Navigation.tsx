@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './Navigation.css';
 
 interface NavigationProps {
@@ -7,13 +8,21 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange }) => {
+    const { t, i18n } = useTranslation();
+    
     const navItems = [
-        { id: 'home', label: 'Home' },
-        { id: 'about', label: 'About' },
-        { id: 'skills', label: 'Skills' },
-        { id: 'projects', label: 'Projects' },
-        { id: 'contact', label: 'Contact' },
+        { id: 'home', label: t('nav.home') },
+        { id: 'about', label: t('nav.about') },
+        { id: 'skills', label: t('nav.skills') },
+        { id: 'projects', label: t('nav.projects') },
+        { id: 'contact', label: t('nav.contact') },
     ];
+
+    const toggleLanguage = () => {
+        const currentLang = i18n.language;
+        const newLang = currentLang === 'en' ? 'bg' : 'en';
+        i18n.changeLanguage(newLang);
+    };
 
     return (
         <header className="header">
@@ -29,6 +38,14 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
                             </button>
                         </li>
                     ))}
+                    <li>
+                        <button 
+                            onClick={toggleLanguage}
+                            className="nav-button language-toggle"
+                        >
+                            {i18n.language === 'en' ? 'БГ' : 'EN'}
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </header>

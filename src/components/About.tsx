@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ParticleBackground from './ParticleBackground';
 import './About.css';
 
@@ -18,23 +19,20 @@ interface Education {
 }
 
 
-interface AboutProps {
-    description: string;
-    experience: Experience[];
-    education: Education[];
-}
+interface AboutProps {}
 
-const About: React.FC<AboutProps> = ({ description, experience, education }) => {
+const About: React.FC<AboutProps> = () => {
+    const { t } = useTranslation();
     return (
         <div className="about-section">
             <ParticleBackground />
             <div className="about-content">
-                <h2 className="section-title">About Me</h2>
+                <h2 className="section-title">{t('about.title')}</h2>
                 
                 {/* Professional Summary */}
                 <div className="resume-card summary-card">
-                    <h3 className="card-title">Professional Summary</h3>
-                    <p className="summary-text">{description}</p>
+                    <h3 className="card-title">{t('about.title')}</h3>
+                    <p className="summary-text">{t('portfolioData.about.description')}</p>
                 </div>
 
                 <div className="resume-grid">
@@ -42,10 +40,10 @@ const About: React.FC<AboutProps> = ({ description, experience, education }) => 
                     <div className="resume-card experience-card">
                         <h3 className="card-title">
                             <span className="title-icon">💼</span>
-                            Professional Experience
+                            {t('about.experience')}
                         </h3>
                         <div className="experience-list">
-                            {experience.map((exp, index) => (
+                            {(t('portfolioData.about.experience', { returnObjects: true }) as any[]).map((exp: any, index: number) => (
                                 <div key={index} className="experience-item">
                                     <div className="experience-header">
                                         <h4 className="position">{exp.position}</h4>
@@ -53,13 +51,13 @@ const About: React.FC<AboutProps> = ({ description, experience, education }) => 
                                     </div>
                                     <p className="company">{exp.company}</p>
                                     <ul className="responsibilities">
-                                        {exp.description.map((desc, i) => (
+                                        {exp.description.map((desc: string, i: number) => (
                                             <li key={i}>{desc}</li>
                                         ))}
                                     </ul>
                                     {exp.technologies && (
                                         <div className="tech-stack">
-                                            {exp.technologies.map((tech, i) => (
+                                            {exp.technologies.map((tech: string, i: number) => (
                                                 <span key={i} className="tech-badge">{tech}</span>
                                             ))}
                                         </div>
@@ -73,10 +71,10 @@ const About: React.FC<AboutProps> = ({ description, experience, education }) => 
                     <div className="resume-card education-card">
                         <h3 className="card-title">
                             <span className="title-icon">🎓</span>
-                            Education
+                            {t('about.education')}
                         </h3>
                         <div className="education-list">
-                            {education.map((edu, index) => (
+                            {(t('portfolioData.about.education', { returnObjects: true }) as any[]).map((edu: any, index: number) => (
                                 <div key={index} className="education-item">
                                     <div className="education-header">
                                         <h4 className="degree">{edu.degree}</h4>

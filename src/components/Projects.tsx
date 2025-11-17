@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ParticleBackground from './ParticleBackground';
 import './Projects.css';
+import { portfolioConfig } from '../config/portfolioConfig';
 
 interface Project {
     title: string;
@@ -12,11 +14,11 @@ interface Project {
     featured?: boolean;
 }
 
-interface ProjectsProps {
-    projects: Project[];
-}
+interface ProjectsProps {}
 
-const Projects: React.FC<ProjectsProps> = ({ projects }) => {
+const Projects: React.FC<ProjectsProps> = () => {
+    const { t } = useTranslation();
+    const projects = portfolioConfig.projects;
     const featuredProjects = projects.filter(project => project.featured);
     const additionalProjects = projects.filter(project => !project.featured);
 
@@ -29,55 +31,60 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         }
     };
 
-    const renderProject = (project: Project, index: number, isAdditional: boolean = false) => (
-        <div key={index} className={`project-card ${isAdditional ? 'additional-project' : ''}`}>
-            <div className="project-image-container">
-                <img src={project.imageUrl} alt={project.title} className="project-image" />
-                {project.status && (
-                    <div 
-                        className="project-status-badge"
-                        style={{ backgroundColor: getStatusColor(project.status) }}
-                    >
-                        {project.status}
-                    </div>
-                )}
-            </div>
-            <div className="project-info">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                {project.tags && (
-                    <div className="project-tags">
-                        {project.tags.map((tag, tagIndex) => (
-                            <span key={tagIndex} className="tech-tag">{tag}</span>
-                        ))}
-                    </div>
-                )}
-                <div className="project-links">
-                    {project.repoUrl && (
-                        <a href={project.repoUrl} className="project-link" target="_blank" rel="noopener noreferrer">
-                            View Code
-                        </a>
-                    )}
-                    {!project.repoUrl && (
-                        <span className="project-status-text">Private Repository</span>
+    const renderProject = (project: Project, index: number, isAdditional: boolean = false) => {
+        const translatedProjects = (t('portfolioData.projects', { returnObjects: true }) as any[]);
+        const translatedProject = translatedProjects[index + (isAdditional ? featuredProjects.length : 0)];
+        
+        return (
+            <div key={index} className={`project-card ${isAdditional ? 'additional-project' : ''}`}>
+                <div className="project-image-container">
+                    <img src={project.imageUrl} alt={translatedProject?.title || project.title} className="project-image" />
+                    {project.status && (
+                        <div 
+                            className="project-status-badge"
+                            style={{ backgroundColor: getStatusColor(project.status) }}
+                        >
+                            {t(`projects.status.${project.status}`)}
+                        </div>
                     )}
                 </div>
+                <div className="project-info">
+                    <h3 className="project-title">{translatedProject?.title || project.title}</h3>
+                    <p className="project-description">{translatedProject?.description || project.description}</p>
+                    {project.tags && (
+                        <div className="project-tags">
+                            {project.tags.map((tag, tagIndex) => (
+                                <span key={tagIndex} className="tech-tag">{tag}</span>
+                            ))}
+                        </div>
+                    )}
+                    <div className="project-links">
+                        {project.repoUrl && (
+                            <a href={project.repoUrl} className="project-link" target="_blank" rel="noopener noreferrer">
+                                {t('projects.viewRepo')}
+                            </a>
+                        )}
+                        {!project.repoUrl && (
+                            <span className="project-status-text">Private Repository</span>
+                        )}
+                    </div>
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
 
     return (
         <div className="projects-section">
             <ParticleBackground />
             <div className="projects-content">
-                <h2 className="section-title">My Projects</h2>
+                <h2 className="section-title">{t('projects.title')}</h2>
                 <p className="projects-subtitle">
-                    A showcase of my development work, from mobile applications to infrastructure solutions
+                    {t('projects.subtitle')}
                 </p>
                 
                 {/* Featured Projects */}
                 <div className="featured-projects">
-                    <h3 className="subsection-title">Featured Projects</h3>
+                    <h3 className="subsection-title">{t('projects.featured')}</h3>
                     <div className="projects-grid featured-grid">
                         {featuredProjects.map((project, index) => renderProject(project, index))}
                     </div>
@@ -86,7 +93,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                 {/* Additional Projects */}
                 {additionalProjects.length > 0 && (
                     <div className="additional-projects">
-                        <h3 className="subsection-title">Additional Projects</h3>
+                        <h3 className="subsection-title">{t('projects.other')}</h3>
                         <div className="projects-grid additional-grid">
                             {additionalProjects.map((project, index) => renderProject(project, index, true))}
                         </div>

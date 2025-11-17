@@ -17,29 +17,18 @@ export default function App() {
         switch (activeSection) {
             case 'home': 
                 return <Home 
-                    name={portfolioConfig.name}
-                    title={portfolioConfig.title}
                     photoUrl={portfolioConfig.about.photoUrl}
                 />;
             case 'about': 
-                return <About 
-                    description={portfolioConfig.about.description}
-                    experience={portfolioConfig.about.experience}
-                    education={portfolioConfig.about.education}
-                />;
+                return <About />;
             case 'skills': 
-                return <Skills skillCategories={portfolioConfig.skillCategories} />;
+                return <Skills />;
             case 'projects': 
-                return <Projects projects={portfolioConfig.projects} />;
+                return <Projects />;
             case 'contact': 
-                return <Contact 
-                    email={portfolioConfig.contact.email}
-                    socials={portfolioConfig.contact.socials}
-                />;
+                return <Contact />;
             default: 
                 return <Home 
-                    name={portfolioConfig.name}
-                    title={portfolioConfig.title}
                     photoUrl={portfolioConfig.about.photoUrl}
                 />;
         }
@@ -63,7 +52,7 @@ export default function App() {
                 </main>
             </div>
             
-            <Footer name={portfolioConfig.name} />
+            <Footer />
         </div>
     );
 }
