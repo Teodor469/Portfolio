@@ -4,20 +4,6 @@ import ParticleBackground from './ParticleBackground';
 import './Skills.css';
 import { portfolioConfig } from '../config/portfolioConfig';
 
-interface Skill {
-    name: string;
-    iconPath?: string;
-    proficiency: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
-    yearsOfExperience?: number;
-}
-
-interface SkillCategory {
-    title: string;
-    description: string;
-    skills: Skill[];
-    icon: string;
-}
-
 interface SkillsProps {}
 
 const Skills: React.FC<SkillsProps> = () => {

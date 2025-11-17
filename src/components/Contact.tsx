@@ -4,12 +4,6 @@ import ParticleBackground from './ParticleBackground';
 import './Contact.css';
 import { portfolioConfig } from '../config/portfolioConfig';
 
-interface Social {
-    name: string;
-    url: string;
-    icon: string;
-}
-
 interface ContactProps {}
 
 const Contact: React.FC<ContactProps> = () => {

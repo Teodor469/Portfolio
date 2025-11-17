@@ -4,16 +4,6 @@ import ParticleBackground from './ParticleBackground';
 import './Projects.css';
 import { portfolioConfig } from '../config/portfolioConfig';
 
-interface Project {
-    title: string;
-    description: string;
-    imageUrl: string;
-    repoUrl?: string;
-    tags?: string[];
-    status?: 'Completed' | 'In Development' | 'Concept';
-    featured?: boolean;
-}
-
 interface ProjectsProps {}
 
 const Projects: React.FC<ProjectsProps> = () => {
@@ -31,7 +21,7 @@ const Projects: React.FC<ProjectsProps> = () => {
         }
     };
 
-    const renderProject = (project: Project, index: number, isAdditional: boolean = false) => {
+    const renderProject = (project: any, index: number, isAdditional: boolean = false) => {
         const translatedProjects = (t('portfolioData.projects', { returnObjects: true }) as any[]);
         const translatedProject = translatedProjects[index + (isAdditional ? featuredProjects.length : 0)];
         
@@ -53,7 +43,7 @@ const Projects: React.FC<ProjectsProps> = () => {
                     <p className="project-description">{translatedProject?.description || project.description}</p>
                     {project.tags && (
                         <div className="project-tags">
-                            {project.tags.map((tag, tagIndex) => (
+                            {project.tags.map((tag: string, tagIndex: number) => (
                                 <span key={tagIndex} className="tech-tag">{tag}</span>
                             ))}
                         </div>

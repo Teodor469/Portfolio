@@ -3,22 +3,6 @@ import { useTranslation } from 'react-i18next';
 import ParticleBackground from './ParticleBackground';
 import './About.css';
 
-interface Experience {
-    company: string;
-    position: string;
-    duration: string;
-    description: string[];
-    technologies?: string[];
-}
-
-interface Education {
-    institution: string;
-    degree: string;
-    duration: string;
-    details?: string;
-}
-
-
 interface AboutProps {}
 
 const About: React.FC<AboutProps> = () => {
